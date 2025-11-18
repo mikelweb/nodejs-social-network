@@ -1,5 +1,6 @@
 const { conn } = require("./database/conn");
 const express = require("express");
+conn();
 
 // Node server
 const app = express();
