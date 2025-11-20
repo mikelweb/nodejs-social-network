@@ -17,6 +17,9 @@ app.use(cors());
 app.use(express.json());
 // Get x-www-urlencoded
 app.use(express.urlencoded({extended: true}));
+
+// Social network routes
+const userRoutes = require("./routes/user");
 app.listen(port, () => {
     console.log("Server running on port " + port)
 });
