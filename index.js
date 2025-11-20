@@ -20,6 +20,8 @@ app.use(express.urlencoded({extended: true}));
 
 // Social network routes
 const userRoutes = require("./routes/user");
+app.use("/api", userRoutes);
+// Run server and listen on port 3900
 app.listen(port, () => {
     console.log("Server running on port " + port)
 });
