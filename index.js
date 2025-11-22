@@ -22,6 +22,7 @@ app.use(express.urlencoded({extended: true}));
 const userRoutes = require("./routes/user");
 const publicationRoutes = require("./routes/publication");
 app.use("/api", userRoutes);
+app.use("/api", publicationRoutes);
 // Run server and listen on port 3900
 app.listen(port, () => {
     console.log("Server running on port " + port)
