@@ -21,6 +21,8 @@ app.use(express.urlencoded({extended: true}));
 // Social network routes
 const userRoutes = require("./routes/user");
 const publicationRoutes = require("./routes/publication");
+const followRoutes = require("./routes/follow");
+
 app.use("/api", userRoutes);
 app.use("/api", publicationRoutes);
 // Run server and listen on port 3900
