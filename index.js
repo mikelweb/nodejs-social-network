@@ -25,6 +25,8 @@ const followRoutes = require("./routes/follow");
 
 app.use("/api", userRoutes);
 app.use("/api", publicationRoutes);
+app.use("/api", followRoutes);
+
 // Run server and listen on port 3900
 app.listen(port, () => {
     console.log("Server running on port " + port)
