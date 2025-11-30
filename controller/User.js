@@ -11,6 +11,20 @@ const register = async (req, res) => {
             "message": "Faltan datos de registro de usuario"
         });
     }
+
+    try {
+        const users = await User.find({
+            $or: [
+                {email: params.email.toLowerCase()},
+                {nick: params.nick.toLowerCase()}
+            ]
+        })
+
+        if(users && users.length > 0) {
+            return res.status(400).json({
+                "status": "error",
+                "message": "Ya existe un usuarios registrado con ese email o nick"
+            });
         }
     );
 }
