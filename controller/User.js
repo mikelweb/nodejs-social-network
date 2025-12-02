@@ -31,6 +31,20 @@ const register = async (req, res) => {
 
         let user = new User(params);
 
+        user.save()
+        .then(item => {
+            return res.status(200).json({
+                status: "success",
+                mensaje: "Accion de registro de usuario",
+                user
+            });
+        })?.catch(error => {
+            return res.status(500).json({
+                status: "error",
+                mensaje: "Error al guardar el usuario",
+                error
+            });
+        });
 }
 
 module.exports = {
