@@ -26,7 +26,11 @@ const register = async (req, res) => {
                 "message": "Ya existe un usuarios registrado con ese email o nick"
             });
         }
-    );
+
+        params.password = await bcrypt.hash(params.password, 10)
+
+        let user = new User(params);
+
 }
 
 module.exports = {
