@@ -45,6 +45,17 @@ const register = async (req, res) => {
                 error
             });
         });
+
+    }
+
+    catch(error) {
+        return res.status(500).json({
+            status: "error",
+            mensaje: "Error al buscar usuarios",
+            error
+        });
+    }
+    
 }
 
 module.exports = {
