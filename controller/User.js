@@ -58,6 +58,20 @@ const register = async (req, res) => {
     
 }
 
+const login = async (req, res) => {
+
+    return res.status(200).json({
+        status: "success",
+        mensaje: "Accion de login de usuario",
+        user: {
+            id: user.id,
+            name: user.name,
+            nick: user.nick
+        },
+        token
+    });
+}
 module.exports = {
-    register
+    register,
+    login,
 }
