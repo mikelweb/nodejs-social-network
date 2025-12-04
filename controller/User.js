@@ -5,7 +5,7 @@ const register = async (req, res) => {
     // get req data
     const params = req.body;
 
-    if(!params.name || !params.surname || !params.nick || !params.password) {
+    if(!params.name || !params.surname || !params.nick || !params.email || !params.password) {
         return res.status(400).json({
             "status": "error",
             "message": "Faltan datos de registro de usuario"
