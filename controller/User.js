@@ -79,6 +79,14 @@ const login = async (req, res) => {
             "message": "No existe ningún usuario registrado con ese email"
         });
     }
+
+    const pwd = bcrypt.compareSync(params.password, user.password);
+    if(!pwd) {
+        return res.status(401).json({
+            "status": "error",
+            "message": "Contraseña incorrecta"
+        });
+    }
     return res.status(200).json({
         status: "success",
         mensaje: "Accion de login de usuario",
