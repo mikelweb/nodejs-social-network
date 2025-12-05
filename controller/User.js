@@ -59,6 +59,15 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
+    // get req data
+    const params = req.body;
+
+    if(!params.email || !params.password) {
+        return res.status(400).json({
+            "status": "error",
+            "message": "Faltan datos de login de usuario"
+        });
+    }
 
     return res.status(200).json({
         status: "success",
