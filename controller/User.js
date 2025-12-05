@@ -69,6 +69,16 @@ const login = async (req, res) => {
         });
     }
 
+    const user = await User.findOne({
+        email: params.email.toLowerCase()
+    });
+
+    if(!user) {
+        return res.status(400).json({
+            "status": "error",
+            "message": "No existe ningún usuario registrado con ese email"
+        });
+    }
     return res.status(200).json({
         status: "success",
         mensaje: "Accion de login de usuario",
