@@ -1,5 +1,6 @@
 const User = require("../model/user")
 const bcrypt = require("bcrypt")
+const jwt = require("../service/jwt");
 
 const register = async (req, res) => {
     // get req data
@@ -87,6 +88,10 @@ const login = async (req, res) => {
             "message": "Contraseña incorrecta"
         });
     }
+
+    // Call createToken
+    const token = jwt.createToken(user);
+
     return res.status(200).json({
         status: "success",
         mensaje: "Accion de login de usuario",
