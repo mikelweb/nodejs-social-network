@@ -103,6 +103,28 @@ const login = async (req, res) => {
         token
     });
 }
+
+const profile = async (req, res) => {
+    // Get URL param
+    const nick = req.params.nick;
+
+    const user = await User.findOne({
+        nick: nick.toLowerCase()
+    });
+
+    return res.status(200).json({
+        status: "success",
+        mensaje: "Datos del usuario",
+        user: {
+            id: user.id,
+            name: user.name,
+            surname: user.surname,
+            nick: user.nick,
+            email: user.email,
+            image: user.image
+        }
+    });
+}
 module.exports = {
     register,
     login,
