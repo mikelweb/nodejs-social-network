@@ -112,6 +112,13 @@ const profile = async (req, res) => {
         nick: nick.toLowerCase()
     });
 
+    if(!user) {
+        return res.status(400).json({
+            "status": "error",
+            "message": "No existe ningún usuario con ese nick"
+        });
+    }
+
     return res.status(200).json({
         status: "success",
         mensaje: "Datos del usuario",
