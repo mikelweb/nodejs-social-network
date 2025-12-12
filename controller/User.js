@@ -132,6 +132,14 @@ const profile = async (req, res) => {
         }
     });
 }
+
+const list = async (req, res) => {
+    // Check page
+    const page = req.params.page ? parseInt(req.params.page) : 1;
+    const itemsPerPage = 2; // users per page
+    const total = await User.countDocuments();
+    const totalPages = Math.ceil(total / itemsPerPage);
+}
 module.exports = {
     register,
     login,
