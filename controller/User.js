@@ -139,6 +139,20 @@ const list = async (req, res) => {
     const itemsPerPage = 2; // users per page
     const total = await User.countDocuments();
     const totalPages = Math.ceil(total / itemsPerPage);
+
+    // Check mongoose paginate
+    const users = await User
+        .find()
+        .sort({_id:1})
+        .select("id name surname nick email image")
+        .paginate(page, itemsPerPage);
+
+    if(!users || users.length == 0) {
+        return res.status(400).json({
+            "status": "error",
+            "message": "No existen usuarios"
+        });
+    }
 }
 module.exports = {
     register,
